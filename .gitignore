@@ -1,6 +1,7 @@
 *.pyc
 isodate.egg-info
 build/
+.eggs
 .installed.cfg
 .pydevproject
 .settings
