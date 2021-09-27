@@ -2,6 +2,16 @@
 ISO 8601 date/time parser
 =========================
 
+isodate2: Temporary fork to fix isodate for Python 3.10
+-------------------------------------------------------
+
+Install fork with:
+
+    python -m pip install isodate2
+
+Original blurb
+--------------
+
 .. image:: https://travis-ci.org/gweis/isodate.svg?branch=master
     :target: https://travis-ci.org/gweis/isodate
     :alt: Travis-CI
