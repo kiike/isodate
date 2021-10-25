@@ -2,10 +2,11 @@
 CHANGES
 =======
 
-0.7.0.dev (unreleased)
-----------------------
+0.7.0 (2021-10-25)
+------------------
 
-- no changes yet
+- Add support for Python 3.7-3.10 (Hugo van Kemenade)
+- Drop supported for EOL Python 2.6 and 3.3 (Hugo van Kemenade)
 
 
 0.6.0 (2017-10-13)

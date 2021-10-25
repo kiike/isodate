@@ -2,17 +2,27 @@
 ISO 8601 date/time parser
 =========================
 
-.. image:: https://travis-ci.org/gweis/isodate.svg?branch=master
-    :target: https://travis-ci.org/gweis/isodate
-    :alt: Travis-CI
-.. image:: https://coveralls.io/repos/gweis/isodate/badge.svg?branch=master
-    :target: https://coveralls.io/r/gweis/isodate?branch=master
+isodate2: Temporary fork to fix isodate for Python 3.10
+-------------------------------------------------------
+
+Install fork with:
+
+    python -m pip install isodate2
+
+Original blurb
+--------------
+
+.. image:: https://github.com/hugovk/isodate/actions/workflows/test.yml/badge.svg
+    :target: https://github.com/hugovk/isodate/actions/
+    :alt: GitHub Actions
+.. image:: https://codecov.io/gh/hugovk/isodate/branch/master/graph/badge.svg?token=CZ0ozUmTKW
+    :target: https://codecov.io/gh/hugovk/isodate
     :alt: Coveralls
-.. image:: https://img.shields.io/pypi/v/isodate.svg
-    :target: https://pypi.python.org/pypi/isodate/          
+.. image:: https://img.shields.io/pypi/v/isodate2.svg
+    :target: https://pypi.org/project/isodate2/
     :alt: Latest Version
-.. image:: https://img.shields.io/pypi/l/isodate.svg
-    :target: https://pypi.python.org/pypi/isodate/          
+.. image:: https://img.shields.io/pypi/l/isodate2.svg
+    :target: https://pypi.org/project/isodate2/
     :alt: License
 
 

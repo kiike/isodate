@@ -33,8 +33,8 @@ def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
 
-setup(name='isodate',
-      version='0.6.0.dev',
+setup(name='isodate2',
+      version='0.7.0',
       packages=['isodate', 'isodate.tests'],
       package_dir={'': 'src'},
 
@@ -49,11 +49,13 @@ setup(name='isodate',
       description='An ISO 8601 date/time/duration parser and formatter',
       license='BSD',
       # keywords = '',
-      url='https://github.com/gweis/isodate/',
+      url='https://github.com/hugovk/isodate/',
 
       long_description=(read('README.rst') +
                         read('CHANGES.txt') +
                         read('TODO.txt')),
+
+      python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*',
 
       classifiers=['Development Status :: 4 - Beta',
                    # 'Environment :: Web Environment',
