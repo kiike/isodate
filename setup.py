@@ -51,9 +51,8 @@ setup(name='isodate2',
       # keywords = '',
       url='https://github.com/isodate/isodate/',
 
-      long_description=(read('README.rst') +
-                        read('CHANGES.txt') +
-                        read('TODO.txt')),
+      long_description=(read('README.md')),
+      long_description_content_type="text/markdown",
 
       python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*',
 
