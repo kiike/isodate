@@ -28,3 +28,11 @@ repos:
     rev: v1.19.0
     hooks:
       - id: setup-cfg-fmt
+
+  - repo: https://github.com/tox-dev/tox-ini-fmt
+    rev: 0.5.0
+    hooks:
+      - id: tox-ini-fmt
+
+ci:
+  autoupdate_schedule: quarterly
