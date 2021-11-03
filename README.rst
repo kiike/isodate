@@ -1,22 +1,14 @@
-
 ISO 8601 date/time parser
 =========================
 
 isodate2: Temporary fork to fix isodate for Python 3.10
 -------------------------------------------------------
 
-Install fork with:
-
-    python -m pip install isodate2
-
-Original blurb
---------------
-
-.. image:: https://github.com/hugovk/isodate/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/hugovk/isodate/actions/
+.. image:: https://github.com/isodate/isodate/actions/workflows/test.yml/badge.svg
+    :target: https://github.com/isodate/isodate/actions/
     :alt: GitHub Actions
-.. image:: https://codecov.io/gh/hugovk/isodate/branch/master/graph/badge.svg?token=CZ0ozUmTKW
-    :target: https://codecov.io/gh/hugovk/isodate
+.. image:: https://codecov.io/gh/isodate/isodate/branch/master/graph/badge.svg?token=CZ0ozUmTKW
+    :target: https://codecov.io/gh/isodate/isodate
     :alt: Coveralls
 .. image:: https://img.shields.io/pypi/v/isodate2.svg
     :target: https://pypi.org/project/isodate2/
@@ -25,6 +17,9 @@ Original blurb
     :target: https://pypi.org/project/isodate2/
     :alt: License
 
+Install fork with:
+
+    python -m pip install isodate2
 
 This module implements ISO 8601 date, time and duration parsing.
 The implementation follows ISO8601:2004 standard, and implements only
@@ -123,4 +118,4 @@ the methods and their limitations.
 The source release provides a *setup.py* script,
 which can be used to run the unit tests included.
 
-Source code is available at `<http://github.com/gweis/isodate>`_.
+Source code is available at `<https://github.com/isodate/isodate>`_.

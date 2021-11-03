@@ -49,7 +49,7 @@ setup(name='isodate2',
       description='An ISO 8601 date/time/duration parser and formatter',
       license='BSD',
       # keywords = '',
-      url='https://github.com/hugovk/isodate/',
+      url='https://github.com/isodate/isodate/',
 
       long_description=(read('README.rst') +
                         read('CHANGES.txt') +
