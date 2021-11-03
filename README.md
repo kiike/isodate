@@ -4,7 +4,7 @@
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/isodate2.svg?logo=python&logoColor=FFE873)](https://pypi.org/project/isodate2)
 [![PyPI downloads](https://img.shields.io/pypi/dm/isodate2.svg)](https://pypistats.org/packages/isodate2)
 [![GitHub Actions status](https://github.com/isodate/isodate/actions/workflows/test.yml/badge.svg)](https://github.com/isodate/isodate/actions)
-[![Codecov](https://codecov.io/gh/isodate/isodate/branch/master/graph/badge.svg?token=Ck33cyrNid)](https://codecov.io/gh/isodate/isodate)
+[![Codecov](https://codecov.io/gh/isodate/isodate/branch/main/graph/badge.svg?token=Ck33cyrNid)](https://codecov.io/gh/isodate/isodate)
 [![Licence](https://img.shields.io/pypi/l/isodate2.svg)](https://pypi.org/project/isodate2/)
 
 ## isodate2 is a fork of isodate
