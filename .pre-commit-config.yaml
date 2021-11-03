@@ -18,3 +18,8 @@ repos:
       - id: check-yaml
       - id: end-of-file-fixer
       - id: trailing-whitespace
+
+  - repo: https://github.com/asottile/setup-cfg-fmt
+    rev: v1.19.0
+    hooks:
+      - id: setup-cfg-fmt
