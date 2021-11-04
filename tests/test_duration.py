@@ -27,8 +27,8 @@
 """
 Test cases for the isoduration module.
 """
+import datetime as dt
 import operator
-from datetime import date, datetime, timedelta
 
 import pytest
 
@@ -47,38 +47,43 @@ from isodate import (
 # is expected.
 PARSE_TEST_CASES = (
     ("P18Y9M4DT11H9M8S", Duration(4, 8, 0, 0, 9, 11, 0, 9, 18), D_DEFAULT, None),
-    ("P2W", timedelta(weeks=2), D_WEEK, None),
+    ("P2W", dt.timedelta(weeks=2), D_WEEK, None),
     ("P3Y6M4DT12H30M5S", Duration(4, 5, 0, 0, 30, 12, 0, 6, 3), D_DEFAULT, None),
-    ("P23DT23H", timedelta(hours=23, days=23), D_DEFAULT, None),
+    ("P23DT23H", dt.timedelta(hours=23, days=23), D_DEFAULT, None),
     ("P4Y", Duration(years=4), D_DEFAULT, None),
     ("P1M", Duration(months=1), D_DEFAULT, None),
-    ("PT1M", timedelta(minutes=1), D_DEFAULT, None),
+    ("PT1M", dt.timedelta(minutes=1), D_DEFAULT, None),
     ("P0.5Y", Duration(years=0.5), D_DEFAULT, None),
-    ("PT36H", timedelta(hours=36), D_DEFAULT, "P1DT12H"),
-    ("P1DT12H", timedelta(days=1, hours=12), D_DEFAULT, None),
-    ("+P11D", timedelta(days=11), D_DEFAULT, "P11D"),
-    ("-P2W", timedelta(weeks=-2), D_WEEK, None),
-    ("-P2.2W", timedelta(weeks=-2.2), D_DEFAULT, "-P15DT9H36M"),
-    ("P1DT2H3M4S", timedelta(days=1, hours=2, minutes=3, seconds=4), D_DEFAULT, None),
-    ("P1DT2H3M", timedelta(days=1, hours=2, minutes=3), D_DEFAULT, None),
-    ("P1DT2H", timedelta(days=1, hours=2), D_DEFAULT, None),
-    ("PT2H", timedelta(hours=2), D_DEFAULT, None),
-    ("PT2.3H", timedelta(hours=2.3), D_DEFAULT, "PT2H18M"),
-    ("PT2H3M4S", timedelta(hours=2, minutes=3, seconds=4), D_DEFAULT, None),
-    ("PT3M4S", timedelta(minutes=3, seconds=4), D_DEFAULT, None),
-    ("PT22S", timedelta(seconds=22), D_DEFAULT, None),
-    ("PT22.22S", timedelta(seconds=22.22), "PT%S.%fS", "PT22.220000S"),
+    ("PT36H", dt.timedelta(hours=36), D_DEFAULT, "P1DT12H"),
+    ("P1DT12H", dt.timedelta(days=1, hours=12), D_DEFAULT, None),
+    ("+P11D", dt.timedelta(days=11), D_DEFAULT, "P11D"),
+    ("-P2W", dt.timedelta(weeks=-2), D_WEEK, None),
+    ("-P2.2W", dt.timedelta(weeks=-2.2), D_DEFAULT, "-P15DT9H36M"),
+    (
+        "P1DT2H3M4S",
+        dt.timedelta(days=1, hours=2, minutes=3, seconds=4),
+        D_DEFAULT,
+        None,
+    ),
+    ("P1DT2H3M", dt.timedelta(days=1, hours=2, minutes=3), D_DEFAULT, None),
+    ("P1DT2H", dt.timedelta(days=1, hours=2), D_DEFAULT, None),
+    ("PT2H", dt.timedelta(hours=2), D_DEFAULT, None),
+    ("PT2.3H", dt.timedelta(hours=2.3), D_DEFAULT, "PT2H18M"),
+    ("PT2H3M4S", dt.timedelta(hours=2, minutes=3, seconds=4), D_DEFAULT, None),
+    ("PT3M4S", dt.timedelta(minutes=3, seconds=4), D_DEFAULT, None),
+    ("PT22S", dt.timedelta(seconds=22), D_DEFAULT, None),
+    ("PT22.22S", dt.timedelta(seconds=22.22), "PT%S.%fS", "PT22.220000S"),
     ("-P2Y", Duration(years=-2), D_DEFAULT, None),
     ("-P3Y6M4DT12H30M5S", Duration(-4, -5, 0, 0, -30, -12, 0, -6, -3), D_DEFAULT, None),
     (
         "-P1DT2H3M4S",
-        timedelta(days=-1, hours=-2, minutes=-3, seconds=-4),
+        dt.timedelta(days=-1, hours=-2, minutes=-3, seconds=-4),
         D_DEFAULT,
         None,
     ),
     # alternative format
     ("P0018-09-04T11:09:08", Duration(4, 8, 0, 0, 9, 11, 0, 9, 18), D_ALT_EXT, None),
-    # ("PT000022.22", timedelta(seconds=22.22),
+    # ("PT000022.22", dt.timedelta(seconds=22.22),
 )
 
 
@@ -204,43 +209,43 @@ def test_ge(dur1, dur2, res_add, res_sub, resge):
 # equal long timedelta duration.
 DATE_TEST_CASES = (
     (
-        date(2008, 2, 29),
-        timedelta(days=10, hours=12, minutes=20),
+        dt.date(2008, 2, 29),
+        dt.timedelta(days=10, hours=12, minutes=20),
         Duration(days=10, hours=12, minutes=20),
     ),
     (
-        date(2008, 1, 31),
-        timedelta(days=10, hours=12, minutes=20),
+        dt.date(2008, 1, 31),
+        dt.timedelta(days=10, hours=12, minutes=20),
         Duration(days=10, hours=12, minutes=20),
     ),
     (
-        datetime(2008, 2, 29),
-        timedelta(days=10, hours=12, minutes=20),
+        dt.datetime(2008, 2, 29),
+        dt.timedelta(days=10, hours=12, minutes=20),
         Duration(days=10, hours=12, minutes=20),
     ),
     (
-        datetime(2008, 1, 31),
-        timedelta(days=10, hours=12, minutes=20),
+        dt.datetime(2008, 1, 31),
+        dt.timedelta(days=10, hours=12, minutes=20),
         Duration(days=10, hours=12, minutes=20),
     ),
     (
-        datetime(2008, 4, 21),
-        timedelta(days=10, hours=12, minutes=20),
+        dt.datetime(2008, 4, 21),
+        dt.timedelta(days=10, hours=12, minutes=20),
         Duration(days=10, hours=12, minutes=20),
     ),
     (
-        datetime(2008, 5, 5),
-        timedelta(days=10, hours=12, minutes=20),
+        dt.datetime(2008, 5, 5),
+        dt.timedelta(days=10, hours=12, minutes=20),
         Duration(days=10, hours=12, minutes=20),
     ),
-    (datetime(2000, 1, 1), timedelta(hours=-33), Duration(hours=-33)),
+    (dt.datetime(2000, 1, 1), dt.timedelta(hours=-33), Duration(hours=-33)),
     (
-        datetime(2008, 5, 5),
+        dt.datetime(2008, 5, 5),
         Duration(years=1, months=1, days=10, hours=12, minutes=20),
         Duration(months=13, days=10, hours=12, minutes=20),
     ),
     (
-        datetime(2000, 3, 30),
+        dt.datetime(2000, 3, 30),
         Duration(years=1, months=1, days=10, hours=12, minutes=20),
         Duration(months=13, days=10, hours=12, minutes=20),
     ),
@@ -266,59 +271,71 @@ def test_sub(start, tdelta, duration):
 # A list of test cases of addition of date/datetime and Duration. The results
 # are compared against a given expected result.
 DATE_CALC_TEST_CASES = (
-    (date(2000, 2, 1), Duration(years=1, months=1), date(2001, 3, 1)),
-    (date(2000, 2, 29), Duration(years=1, months=1), date(2001, 3, 29)),
-    (date(2000, 2, 29), Duration(years=1), date(2001, 2, 28)),
-    (date(1996, 2, 29), Duration(years=4), date(2000, 2, 29)),
-    (date(2096, 2, 29), Duration(years=4), date(2100, 2, 28)),
-    (date(2000, 2, 1), Duration(years=-1, months=-1), date(1999, 1, 1)),
-    (date(2000, 2, 29), Duration(years=-1, months=-1), date(1999, 1, 29)),
-    (date(2000, 2, 1), Duration(years=1, months=1, days=1), date(2001, 3, 2)),
-    (date(2000, 2, 29), Duration(years=1, months=1, days=1), date(2001, 3, 30)),
-    (date(2000, 2, 29), Duration(years=1, days=1), date(2001, 3, 1)),
-    (date(1996, 2, 29), Duration(years=4, days=1), date(2000, 3, 1)),
-    (date(2096, 2, 29), Duration(years=4, days=1), date(2100, 3, 1)),
-    (date(2000, 2, 1), Duration(years=-1, months=-1, days=-1), date(1998, 12, 31)),
-    (date(2000, 2, 29), Duration(years=-1, months=-1, days=-1), date(1999, 1, 28)),
-    (date(2001, 4, 1), Duration(years=-1, months=-1, days=-1), date(2000, 2, 29)),
-    (date(2000, 4, 1), Duration(years=-1, months=-1, days=-1), date(1999, 2, 28)),
+    (dt.date(2000, 2, 1), Duration(years=1, months=1), dt.date(2001, 3, 1)),
+    (dt.date(2000, 2, 29), Duration(years=1, months=1), dt.date(2001, 3, 29)),
+    (dt.date(2000, 2, 29), Duration(years=1), dt.date(2001, 2, 28)),
+    (dt.date(1996, 2, 29), Duration(years=4), dt.date(2000, 2, 29)),
+    (dt.date(2096, 2, 29), Duration(years=4), dt.date(2100, 2, 28)),
+    (dt.date(2000, 2, 1), Duration(years=-1, months=-1), dt.date(1999, 1, 1)),
+    (dt.date(2000, 2, 29), Duration(years=-1, months=-1), dt.date(1999, 1, 29)),
+    (dt.date(2000, 2, 1), Duration(years=1, months=1, days=1), dt.date(2001, 3, 2)),
+    (dt.date(2000, 2, 29), Duration(years=1, months=1, days=1), dt.date(2001, 3, 30)),
+    (dt.date(2000, 2, 29), Duration(years=1, days=1), dt.date(2001, 3, 1)),
+    (dt.date(1996, 2, 29), Duration(years=4, days=1), dt.date(2000, 3, 1)),
+    (dt.date(2096, 2, 29), Duration(years=4, days=1), dt.date(2100, 3, 1)),
+    (
+        dt.date(2000, 2, 1),
+        Duration(years=-1, months=-1, days=-1),
+        dt.date(1998, 12, 31),
+    ),
+    (
+        dt.date(2000, 2, 29),
+        Duration(years=-1, months=-1, days=-1),
+        dt.date(1999, 1, 28),
+    ),
+    (dt.date(2001, 4, 1), Duration(years=-1, months=-1, days=-1), dt.date(2000, 2, 29)),
+    (dt.date(2000, 4, 1), Duration(years=-1, months=-1, days=-1), dt.date(1999, 2, 28)),
     (
         Duration(years=1, months=2),
         Duration(years=0, months=0, days=1),
         Duration(years=1, months=2, days=1),
     ),
-    (Duration(years=-1, months=-1, days=-1), date(2000, 4, 1), date(1999, 2, 28)),
-    (Duration(years=1, months=1, weeks=5), date(2000, 1, 30), date(2001, 4, 4)),
-    (parse_duration("P1Y1M5W"), date(2000, 1, 30), date(2001, 4, 4)),
-    (parse_duration("P0.5Y"), date(2000, 1, 30), None),
+    (Duration(years=-1, months=-1, days=-1), dt.date(2000, 4, 1), dt.date(1999, 2, 28)),
+    (Duration(years=1, months=1, weeks=5), dt.date(2000, 1, 30), dt.date(2001, 4, 4)),
+    (parse_duration("P1Y1M5W"), dt.date(2000, 1, 30), dt.date(2001, 4, 4)),
+    (parse_duration("P0.5Y"), dt.date(2000, 1, 30), None),
     (
         Duration(years=1, months=1, hours=3),
-        datetime(2000, 1, 30, 12, 15, 00),
-        datetime(2001, 2, 28, 15, 15, 00),
+        dt.datetime(2000, 1, 30, 12, 15, 00),
+        dt.datetime(2001, 2, 28, 15, 15, 00),
     ),
     (
         parse_duration("P1Y1MT3H"),
-        datetime(2000, 1, 30, 12, 15, 00),
-        datetime(2001, 2, 28, 15, 15, 00),
+        dt.datetime(2000, 1, 30, 12, 15, 00),
+        dt.datetime(2001, 2, 28, 15, 15, 00),
     ),
     (
         Duration(years=1, months=2),
-        timedelta(days=1),
+        dt.timedelta(days=1),
         Duration(years=1, months=2, days=1),
     ),
     (
-        timedelta(days=1),
+        dt.timedelta(days=1),
         Duration(years=1, months=2),
         Duration(years=1, months=2, days=1),
     ),
-    (datetime(2008, 1, 1, 0, 2), Duration(months=1), datetime(2008, 2, 1, 0, 2)),
+    (dt.datetime(2008, 1, 1, 0, 2), Duration(months=1), dt.datetime(2008, 2, 1, 0, 2)),
     (
-        datetime.strptime("200802", "%Y%M"),
+        dt.datetime.strptime("200802", "%Y%M"),
         parse_duration("P1M"),
-        datetime(2008, 2, 1, 0, 2),
+        dt.datetime(2008, 2, 1, 0, 2),
     ),
-    (datetime(2008, 2, 1), Duration(months=1), datetime(2008, 3, 1)),
-    (datetime.strptime("200802", "%Y%m"), parse_duration("P1M"), datetime(2008, 3, 1)),
+    (dt.datetime(2008, 2, 1), Duration(months=1), dt.datetime(2008, 3, 1)),
+    (
+        dt.datetime.strptime("200802", "%Y%m"),
+        parse_duration("P1M"),
+        dt.datetime(2008, 3, 1),
+    ),
     # (date(2000, 1, 1),
     #  Duration(years=1.5),
     #  date(2001, 6, 1)),
@@ -373,7 +390,7 @@ def test_associative():
     """
     days1 = Duration(days=1)
     months1 = Duration(months=1)
-    start = date(2000, 3, 30)
+    start = dt.date(2000, 3, 30)
     res1 = start + days1 + months1
     res2 = start + months1 + days1
     assert res1 != res2
@@ -384,9 +401,9 @@ def test_typeerror():
     Test if TypeError is raised with certain parameters.
     """
     with pytest.raises(TypeError):
-        parse_duration(date(2000, 1, 1))
+        parse_duration(dt.date(2000, 1, 1))
     with pytest.raises(TypeError):
-        operator.sub(Duration(years=1), date(2000, 1, 1))
+        operator.sub(Duration(years=1), dt.date(2000, 1, 1))
     with pytest.raises(TypeError):
         operator.sub("raise exc", Duration(years=1))
     with pytest.raises(TypeError):
@@ -449,11 +466,11 @@ def test_neg():
     assert -Duration(0) == Duration(0)
     assert -Duration(years=1, months=1) == Duration(years=-1, months=-1)
     assert -Duration(years=1, months=1) == Duration(months=-13)
-    assert -Duration(years=1) != timedelta(days=-365)
-    assert -timedelta(days=365) != Duration(years=-1)
+    assert -Duration(years=1) != dt.timedelta(days=-365)
+    assert -dt.timedelta(days=365) != Duration(years=-1)
     # FIXME: this test fails in Python 3... it seems like Python 3
     #        treats a == b the same b == a
-    # assert -timedelta(days=10) != -Duration(days=10)
+    # assert -dt.timedelta(days=10) != -Duration(days=10)
 
 
 def test_format_strftime():
@@ -480,16 +497,16 @@ def test_equal():
     assert Duration(years=1, months=1) == Duration(months=13)
     assert Duration(years=1, months=2) != Duration(years=1, months=1)
     assert Duration(years=1, months=1) != Duration(months=14)
-    assert Duration(years=1) != timedelta(days=365)
+    assert Duration(years=1) != dt.timedelta(days=365)
     assert not (Duration(years=1, months=1) != Duration(years=1, months=1))
     assert not (Duration(years=1, months=1) != Duration(months=13))
     assert Duration(years=1, months=2) != Duration(years=1, months=1)
     assert Duration(years=1, months=1) != Duration(months=14)
-    assert Duration(years=1) != timedelta(days=365)
-    assert Duration(days=1) == timedelta(days=1)
+    assert Duration(years=1) != dt.timedelta(days=365)
+    assert Duration(days=1) == dt.timedelta(days=1)
     # FIXME: this test fails in Python 3... it seems like Python 3
     #        treats a != b the same b != a
-    # assert timedelta(days=1) != Duration(days=1)
+    # assert dt.timedelta(days=1) != Duration(days=1)
 
 
 def test_totimedelta():
@@ -497,12 +514,12 @@ def test_totimedelta():
     Test conversion form Duration to timedelta.
     """
     dur = Duration(years=1, months=2, days=10)
-    assert dur.totimedelta(datetime(1998, 2, 25)) == timedelta(434)
+    assert dur.totimedelta(dt.datetime(1998, 2, 25)) == dt.timedelta(434)
     # leap year has one day more in February
-    assert dur.totimedelta(datetime(2000, 2, 25)) == timedelta(435)
+    assert dur.totimedelta(dt.datetime(2000, 2, 25)) == dt.timedelta(435)
     dur = Duration(months=2)
     # March is longer than February, but April is shorter than
     # March (BEcause only one day difference compared to 2)
-    assert dur.totimedelta(datetime(2000, 2, 25)) == timedelta(60)
-    assert dur.totimedelta(datetime(2001, 2, 25)) == timedelta(59)
-    assert dur.totimedelta(datetime(2001, 3, 25)) == timedelta(61)
+    assert dur.totimedelta(dt.datetime(2000, 2, 25)) == dt.timedelta(60)
+    assert dur.totimedelta(dt.datetime(2001, 2, 25)) == dt.timedelta(59)
+    assert dur.totimedelta(dt.datetime(2001, 3, 25)) == dt.timedelta(61)
