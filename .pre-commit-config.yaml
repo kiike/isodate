@@ -5,6 +5,17 @@ repos:
       - id: pyupgrade
         args: [--py36-plus]
 
+  - repo: https://github.com/psf/black
+    rev: 21.10b0
+    hooks:
+      - id: black
+        args: [--target-version=py36]
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.10.0
+    hooks:
+      - id: isort
+
   - repo: https://github.com/PyCQA/flake8
     rev: 4.0.1
     hooks:
@@ -30,7 +41,7 @@ repos:
       - id: setup-cfg-fmt
 
   - repo: https://github.com/tox-dev/tox-ini-fmt
-    rev: 0.5.0
+    rev: 0.5.1
     hooks:
       - id: tox-ini-fmt
 
