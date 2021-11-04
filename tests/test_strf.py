@@ -123,8 +123,4 @@ def test_format(dt, format, expectation):
     Take date object and create ISO string from it.
     This is the reverse test to test_parse.
     """
-    if expectation is None:
-        with pytest.raises(AttributeError):
-            strftime(dt, format)
-    else:
-        assert strftime(dt, format) == expectation
+    assert strftime(dt, format) == expectation
