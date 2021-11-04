@@ -27,8 +27,8 @@
 """
 Test cases for the isodate module.
 """
+import datetime as dt
 import time
-from datetime import datetime, timedelta
 
 import pytest
 
@@ -36,24 +36,24 @@ from isodate import DT_EXT_COMPLETE, LOCAL, strftime, tzinfo
 
 TEST_CASES = (
     (
-        datetime(2012, 12, 25, 13, 30, 0, 0, LOCAL),
+        dt.datetime(2012, 12, 25, 13, 30, 0, 0, LOCAL),
         DT_EXT_COMPLETE,
         "2012-12-25T13:30:00+10:00",
     ),
     # DST ON
     (
-        datetime(1999, 12, 25, 13, 30, 0, 0, LOCAL),
+        dt.datetime(1999, 12, 25, 13, 30, 0, 0, LOCAL),
         DT_EXT_COMPLETE,
         "1999-12-25T13:30:00+11:00",
     ),
     # microseconds
     (
-        datetime(2012, 10, 12, 8, 29, 46, 69178),
+        dt.datetime(2012, 10, 12, 8, 29, 46, 69178),
         "%Y-%m-%dT%H:%M:%S.%f",
         "2012-10-12T08:29:46.069178",
     ),
     (
-        datetime(2012, 10, 12, 8, 29, 46, 691780),
+        dt.datetime(2012, 10, 12, 8, 29, 46, 691780),
         "%Y-%m-%dT%H:%M:%S.%f",
         "2012-10-12T08:29:46.691780",
     ),
@@ -98,8 +98,8 @@ def setup_module(module):
     # override all saved values with fixtures.
     # calculate LOCAL TZ offset, so that this test runs in
     # every time zone
-    tzinfo.STDOFFSET = timedelta(seconds=36000)  # assume LOC = +10:00
-    tzinfo.DSTOFFSET = timedelta(seconds=39600)  # assume DST = +11:00
+    tzinfo.STDOFFSET = dt.timedelta(seconds=36000)  # assume LOC = +10:00
+    tzinfo.DSTOFFSET = dt.timedelta(seconds=39600)  # assume DST = +11:00
     tzinfo.DSTDIFF = tzinfo.DSTOFFSET - tzinfo.STDOFFSET
     time.localtime = localtime_mock
 

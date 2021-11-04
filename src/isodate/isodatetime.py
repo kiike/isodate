@@ -30,7 +30,7 @@ This module defines a method to parse an ISO 8601:2004 date time string.
 For this job it uses the parse_date and parse_time methods defined in date
 and time module.
 """
-from datetime import datetime
+import datetime as dt
 
 from isodate.isodates import parse_date
 from isodate.isoerror import ISO8601Error
@@ -55,7 +55,7 @@ def parse_datetime(datetimestring):
         )
     tmpdate = parse_date(datestring)
     tmptime = parse_time(timestring)
-    return datetime.combine(tmpdate, tmptime)
+    return dt.datetime.combine(tmpdate, tmptime)
 
 
 def datetime_isoformat(
