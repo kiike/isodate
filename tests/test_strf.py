@@ -27,14 +27,12 @@
 """
 Test cases for the isodate module.
 """
-import pytest
 import time
 from datetime import datetime, timedelta
-from isodate import strftime
-from isodate import LOCAL
-from isodate import DT_EXT_COMPLETE
-from isodate import tzinfo
 
+import pytest
+
+from isodate import DT_EXT_COMPLETE, LOCAL, strftime, tzinfo
 
 TEST_CASES = (
     (

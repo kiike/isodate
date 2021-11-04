@@ -31,11 +31,21 @@ from datetime import time
 
 import pytest
 
-from isodate import parse_time, UTC, FixedOffset, ISO8601Error, time_isoformat
-from isodate import TIME_BAS_COMPLETE, TIME_BAS_MINUTE
-from isodate import TIME_EXT_COMPLETE, TIME_EXT_MINUTE
-from isodate import TIME_HOUR
-from isodate import TZ_BAS, TZ_EXT, TZ_HOUR
+from isodate import (
+    TIME_BAS_COMPLETE,
+    TIME_BAS_MINUTE,
+    TIME_EXT_COMPLETE,
+    TIME_EXT_MINUTE,
+    TIME_HOUR,
+    TZ_BAS,
+    TZ_EXT,
+    TZ_HOUR,
+    UTC,
+    FixedOffset,
+    ISO8601Error,
+    parse_time,
+    time_isoformat,
+)
 
 # the following list contains tuples of ISO time strings and the expected
 # result from the parse_time method. A result of None means an ISO8601Error

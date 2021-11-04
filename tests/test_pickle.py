@@ -2,7 +2,9 @@
 Tests to parse an ISO datetime string into a datetime object.
 """
 import pickle
+
 import pytest
+
 import isodate
 
 
