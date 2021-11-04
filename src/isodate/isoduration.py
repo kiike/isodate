@@ -34,8 +34,6 @@ from datetime import timedelta
 from decimal import Decimal
 import re
 
-from six import string_types
-
 from isodate.duration import Duration
 from isodate.isoerror import ISO8601Error
 from isodate.isodatetime import parse_datetime
@@ -51,7 +49,7 @@ ISO8601_PERIOD_REGEX = re.compile(
     r"((?P<separator>T)(?P<hours>[0-9]+([,.][0-9]+)?H)?"
     r"(?P<minutes>[0-9]+([,.][0-9]+)?M)?"
     r"(?P<seconds>[0-9]+([,.][0-9]+)?S)?)?$")
-# regular expression to parse ISO duartion strings.
+# regular expression to parse ISO duration strings.
 
 
 def parse_duration(datestring):
@@ -82,7 +80,7 @@ def parse_duration(datestring):
       The alternative format does not support durations with years, months or
       days set to 0.
     """
-    if not isinstance(datestring, string_types):
+    if not isinstance(datestring, str):
         raise TypeError("Expecting a string %r" % datestring)
     match = ISO8601_PERIOD_REGEX.match(datestring)
     if not match:
@@ -139,11 +137,11 @@ def duration_isoformat(tduration, format=D_DEFAULT):
     '''
     # TODO: implement better decision for negative Durations.
     #       should be done in Duration class in consistent way with timedelta.
-    if (((isinstance(tduration, Duration) and
-          (tduration.years < 0 or tduration.months < 0 or
-           tduration.tdelta < timedelta(0))) or
-        (isinstance(tduration, timedelta) and
-         (tduration < timedelta(0))))):
+    if ((isinstance(tduration, Duration) and
+         (tduration.years < 0 or tduration.months < 0 or
+          tduration.tdelta < timedelta(0))) or
+            (isinstance(tduration, timedelta) and
+             (tduration < timedelta(0)))):
         ret = '-'
     else:
         ret = ''
