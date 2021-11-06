@@ -103,3 +103,15 @@ The source release provides a *setup.py* script,
 which can be used to run the unit tests included.
 
 Source code is available at https://github.com/isodate/isodate.
+
+## See also
+
+[isoduration](https://github.com/bolsote/isoduration) is a well-maintained library which
+aims to improve upon isodate:
+
+> The state of the art of ISO 8601 duration handling in Python is more or less limited
+> to what's offered by [`isodate`](https://pypi.org/project/isodate/). What we are
+> trying to achieve here is to address the shortcomings of `isodate` (as described in
+> their own [_Limitations_](https://github.com/gweis/isodate/#limitations) section), and
+> a few of our own annoyances with their interface, such as the lack of uniformity in
+> their handling of types, and the use of regular expressions for parsing.
