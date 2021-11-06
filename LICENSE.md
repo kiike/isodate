@@ -1,5 +1,7 @@
-Copyright (c) 2021, Hugo van Kemenade and contributors Copyright (c) 2009-2018,
-Gerhard Weis and contributors Copyright 2009, Gerhard Weis All rights reserved.
+Copyright (c) 2021, Hugo van Kemenade and contributors
+Copyright (c) 2009-2018, Gerhard Weis and contributors
+Copyright (c) 2009, Gerhard Weis
+All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
