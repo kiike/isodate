@@ -519,7 +519,19 @@ def test_totimedelta():
     assert dur.totimedelta(dt.datetime(2000, 2, 25)) == dt.timedelta(435)
     dur = Duration(months=2)
     # March is longer than February, but April is shorter than
-    # March (BEcause only one day difference compared to 2)
+    # March (because only one day difference compared to 2)
     assert dur.totimedelta(dt.datetime(2000, 2, 25)) == dt.timedelta(60)
     assert dur.totimedelta(dt.datetime(2001, 2, 25)) == dt.timedelta(59)
     assert dur.totimedelta(dt.datetime(2001, 3, 25)) == dt.timedelta(61)
+
+
+@pytest.mark.parametrize(
+    "duration_string, expectation, format, alt_str", PARSE_TEST_CASES
+)
+def test_parse_type(duration_string, expectation, format, alt_str):
+    """
+    Test return value for instance of Duration class.
+    """
+    result = parse_duration(duration_string, prefer_timedelta=False)
+    assert isinstance(result, Duration)
+    assert not isinstance(result, dt.timedelta)

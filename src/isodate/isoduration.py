@@ -33,6 +33,7 @@ format timedelta or Duration instances as ISO conforming strings.
 import re
 from datetime import timedelta
 from decimal import Decimal
+from typing import Union
 
 from isodate.duration import Duration
 from isodate.isodatetime import parse_datetime
@@ -53,7 +54,9 @@ ISO8601_PERIOD_REGEX = re.compile(
 # regular expression to parse ISO duration strings.
 
 
-def parse_duration(datestring):
+def parse_duration(
+    datestring: str, prefer_timedelta: bool = True
+) -> Union[Duration, timedelta]:
     """
     Parses an ISO 8601 durations into datetime.timedelta or Duration objects.
 
@@ -88,7 +91,17 @@ def parse_duration(datestring):
         # try alternative format:
         if datestring.startswith("P"):
             durdt = parse_datetime(datestring[1:])
-            if durdt.year != 0 or durdt.month != 0:
+            if prefer_timedelta and durdt.year == 0 and durdt.month == 0:
+                # FIXME: currently not possible in alternative format
+                # create timedelta
+                ret = timedelta(
+                    days=durdt.day,
+                    seconds=durdt.second,
+                    microseconds=durdt.microsecond,
+                    minutes=durdt.minute,
+                    hours=durdt.hour,
+                )
+            else:
                 # create Duration
                 ret = Duration(
                     days=durdt.day,
@@ -98,15 +111,6 @@ def parse_duration(datestring):
                     hours=durdt.hour,
                     months=durdt.month,
                     years=durdt.year,
-                )
-            else:  # FIXME: currently not possible in alternative format
-                # create timedelta
-                ret = timedelta(
-                    days=durdt.day,
-                    seconds=durdt.second,
-                    microseconds=durdt.microsecond,
-                    minutes=durdt.minute,
-                    hours=durdt.hour,
                 )
             return ret
         raise ISO8601Error("Unable to parse duration string %r" % datestring)
@@ -122,7 +126,7 @@ def parse_duration(datestring):
                 # these values are passed into a timedelta object,
                 # which works with floats.
                 groups[key] = float(groups[key][:-1].replace(",", "."))
-    if groups["years"] == 0 and groups["months"] == 0:
+    if prefer_timedelta and groups["years"] == 0 and groups["months"] == 0:
         ret = timedelta(
             days=groups["days"],
             hours=groups["hours"],
