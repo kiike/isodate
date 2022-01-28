@@ -31,10 +31,9 @@ Python datetime.time instance.
 It supports all basic and extended formats including time zone specifications
 as described in the ISO standard.
 """
-from decimal import Decimal
-from decimal import ROUND_DOWN
-from datetime import time
 import re
+from datetime import time
+from decimal import ROUND_DOWN, Decimal
 
 from isodate.isoerror import ISO8601Error
 from isodate.isostrf import TIME_EXT_COMPLETE, TZ_EXT, strftime
@@ -148,8 +147,9 @@ def parse_time(timestring):
                 second_decimal = Decimal(groups["second"])
                 second = second_decimal.quantize(Decimal(".000001"))
                 if int(second) > 59:
-                    second = second_decimal.quantize(Decimal(".000001"),
-                                                     rounding=ROUND_DOWN)
+                    second = second_decimal.quantize(
+                        Decimal(".000001"), rounding=ROUND_DOWN
+                    )
                 microsecond = (second - int(second)) * int(1e6)
                 # int(...) ... no rounding
                 # to_integral() ... rounding
